@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Brown Girl Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --pink: #E5007D; --black: #111; --gray: #444; --muted: #888; --border: #e8e8e8; --pink-bg: #fff5fa; }
+    body { font-family: 'Inter', Arial, sans-serif; background: #fff; color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    .site-nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; }
+    .logo-mark { display: inline-flex; align-items: center; background: var(--pink); color: #fff; font-size: 9.5px; font-weight: 800; line-height: 1.3; padding: 9px 11px; width: 64px; height: 44px; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { font-size: 13px; font-weight: 600; color: #666; transition: color 0.12s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 0; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--black); }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 20px; }
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #fff; flex-direction: column; gap: 0; border-bottom: 2px solid var(--border); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+      .site-nav.open .nav-links { display: flex; }
+      .nav-links a { padding: 16px 20px; font-size: 15px; border-bottom: 1px solid var(--border); }
+    }
+
+    .container { max-width: 740px; margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    .eyebrow { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--pink); margin-bottom: 16px; }
+    h1 { font-size: clamp(42px, 8vw, 68px); font-weight: 900; line-height: 1.0; letter-spacing: -2px; color: var(--black); margin-bottom: 24px; }
+    h2 { font-size: clamp(26px, 5vw, 38px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--black); margin-bottom: 16px; }
+    h3 { font-size: 19px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    p { font-size: 16px; color: var(--gray); line-height: 1.75; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    .btn { display: inline-block; background: var(--pink); color: #fff; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 14px 30px; margin-top: 12px; }
+
+    .page-header { padding: 64px 0 56px; border-bottom: 1px solid var(--border); }
+
+    .intro-block { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .intro-block .lead { font-size: 17px; color: var(--black); font-weight: 500; max-width: 600px; line-height: 1.7; margin-bottom: 20px; }
+    .intro-block p { max-width: 580px; }
+
+    .process-block { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .steps { margin-top: 40px; max-width: 620px; }
+    .step { padding: 28px 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 52px 1fr; gap: 16px; }
+    .step:last-child { border-bottom: 1px solid var(--border); }
+    .step-num { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--pink); padding-top: 3px; }
+    .step h3 { font-size: 17px; margin-bottom: 8px; }
+    .step p { font-size: 15px; margin-bottom: 0; }
+
+    .deliverables-block { padding: 80px 0; border-bottom: 1px solid var(--border); background: var(--pink-bg); }
+    .deliverables-list { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; max-width: 520px; }
+    .deliverable-item { font-size: 15px; font-weight: 600; color: var(--black); padding-left: 18px; position: relative; line-height: 1.55; }
+    .deliverable-item::before { content: '—'; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
+
+    .tiers-block { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .tiers-block > .container > p { max-width: 540px; margin-bottom: 36px; }
+    .tiers { max-width: 620px; }
+    .tier { padding: 24px 0; border-top: 1px solid var(--border); }
+    .tier:last-child { border-bottom: 1px solid var(--border); }
+    .tier h3 { font-size: 16px; margin-bottom: 6px; }
+    .tier p { font-size: 14px; margin-bottom: 0; }
+
+    .who-block { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .who-box { margin-top: 28px; max-width: 560px; padding: 24px 28px; border-left: 3px solid var(--pink); background: var(--pink-bg); }
+    .who-box p { font-size: 15px; line-height: 1.75; margin-bottom: 0; }
+
+    .cta-block { padding: 80px 0; }
+    .cta-block p { max-width: 480px; }
+
+    .site-footer { background: #111; padding: 60px 40px 40px; }
+    @media (max-width: 640px) { .site-footer { padding: 48px 20px 36px; } }
+    .footer-inner { max-width: 740px; margin: 0 auto 40px; display: flex; gap: 56px; flex-wrap: wrap; justify-content: space-between; }
+    .footer-logo .logo-mark { font-size: 9px; width: 58px; height: 40px; margin-bottom: 14px; }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.75; max-width: 200px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500; }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-col { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 2; }
+    .footer-contact-col a { color: var(--pink); font-weight: 600; }
+    .footer-bottom { max-width: 740px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; color: rgba(255,255,255,0.25); }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" id="nav">
+    <a href="index.html" class="logo-mark">Brown Girl<br>Project</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="eyebrow">For Organizations</div>
+      <h1>Listening Labs.</h1>
+    </div>
+  </div>
+
+  <section class="intro-block">
+    <div class="container">
+      <p class="lead">Structured, facilitated small-group conversations that generate qualitative research insights while creating genuine value for participants.</p>
+      <p>Designed for organizations that want to understand their communities — not just survey them. Participants leave feeling heard, not processed.</p>
+    </div>
+  </section>
+
+  <section class="process-block">
+    <div class="container">
+      <div class="eyebrow">The Process</div>
+      <h2>Three phases.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h3>Co-Design</h3>
+            <p>We define the research question together. The focus emerges from your goals and your community's priorities — not a generic template.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h3>Facilitation</h3>
+            <p>Small groups of 4–8 participants. Trauma-informed facilitation that creates real space for honest reflection — not just answers people think you want to hear.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h3>Analysis &amp; Return</h3>
+            <p>Findings developed through qualitative thematic analysis, delivered in accessible format, and shared back with participants before broader publication.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="deliverables-block">
+    <div class="container">
+      <div class="eyebrow">What You Receive</div>
+      <h2>Everything documented.</h2>
+      <div class="deliverables-list">
+        <div class="deliverable-item">Facilitated session(s) with your target community</div>
+        <div class="deliverable-item">Full thematic analysis of findings</div>
+        <div class="deliverable-item">Written report in accessible language</div>
+        <div class="deliverable-item">Executive summary for internal or funder use</div>
+        <div class="deliverable-item">Recommendations for program design or next steps</div>
+        <div class="deliverable-item">Optional: return-of-findings session with participants</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tiers-block">
+    <div class="container">
+      <div class="eyebrow">Services</div>
+      <h2>Pick your scope.</h2>
+      <p>All engagements are scoped to your organization's needs. Pricing discussed on inquiry.</p>
+      <div class="tiers">
+        <div class="tier">
+          <h3>Single Listening Lab</h3>
+          <p>One facilitated session + brief findings summary. Ideal for scoping or initial community insight.</p>
+        </div>
+        <div class="tier">
+          <h3>Lab + Research Report</h3>
+          <p>Multiple sessions + full thematic analysis + written report. The complete research cycle.</p>
+        </div>
+        <div class="tier">
+          <h3>Full Research Project</h3>
+          <p>Multi-phase participatory research with co-design, facilitation, analysis, return of findings, and recommendations.</p>
+        </div>
+        <div class="tier">
+          <h3>Workshop &amp; Facilitation</h3>
+          <p>Standalone facilitation for community sessions, focus groups, or team reflection processes.</p>
+        </div>
+        <div class="tier">
+          <h3>Research Consulting</h3>
+          <p>Advisory support on participatory research design, methodology, or community engagement strategy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="who-block">
+    <div class="container">
+      <div class="eyebrow">Who This Is For</div>
+      <h2>Organizations working with communities.</h2>
+      <div class="who-box">
+        <p>Nonprofits, NGOs, foundations, and academic institutions that work with communities and need grounded insight — not assumptions. Organizations designing programs for women, communities of color, or immigrant populations. Teams that want participatory methods without building internal research capacity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <div class="container">
+      <div class="eyebrow">Get in Touch</div>
+      <h2>Ready to start?</h2>
+      <p>Tell us about your organization and what you're trying to understand. We'll follow up to scope the right approach.</p>
+      <a href="contact.html" class="btn">Contact Us</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-mark">Brown Girl<br>Project</div>
+        <p class="footer-tagline">Independent research rooted in community.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-contact-col">
+        <a href="mailto:browngirlprojectny@gmail.com">browngirlprojectny@gmail.com</a><br>
+        <a href="https://instagram.com/_browngirlproject">@_browngirlproject</a><br>
+        browngirlproject.org
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Brown Girl Project. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

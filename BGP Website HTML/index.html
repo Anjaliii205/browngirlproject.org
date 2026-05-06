@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brown Girl Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink: #E5007D;
+      --black: #111;
+      --gray: #444;
+      --muted: #888;
+      --border: #e8e8e8;
+      --pink-bg: #fff5fa;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #fff;
+      color: var(--black);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      background: var(--pink);
+      color: #fff;
+      font-size: 9.5px;
+      font-weight: 800;
+      line-height: 1.3;
+      padding: 9px 11px;
+      width: 64px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .nav-links { display: flex; gap: 36px; }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      transition: color 0.12s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--black); }
+
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 20px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        gap: 0;
+        border-bottom: 2px solid var(--border);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+      }
+      .site-nav.open .nav-links { display: flex; }
+      .nav-links a {
+        padding: 16px 20px;
+        font-size: 15px;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    .container { max-width: 740px; margin: 0 auto; padding: 0 40px; }
+
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    .eyebrow {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--pink);
+      margin-bottom: 16px;
+    }
+
+    .rule {
+      border: none;
+      border-top: 2px solid var(--pink);
+      width: 36px;
+      margin: 28px 0;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 68px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    .btn {
+      display: inline-block;
+      background: var(--pink);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 14px 30px;
+      margin-top: 12px;
+      transition: opacity 0.12s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    .hero {
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--gray);
+      line-height: 1.72;
+      max-width: 560px;
+      margin-bottom: 0;
+    }
+
+    .report-feature { background: var(--pink); padding: 72px 0; }
+    .report-feature .eyebrow { color: rgba(255,255,255,0.65); }
+    .report-feature h2 { color: #fff; max-width: 540px; margin-bottom: 20px; }
+    .report-feature p { color: rgba(255,255,255,0.78); max-width: 520px; font-size: 15px; }
+    .report-feature .btn { background: #fff; color: var(--pink); }
+
+    .about-strip { padding: 72px 0; border-bottom: 1px solid var(--border); }
+    .about-strip p { max-width: 580px; }
+    .about-strip .link {
+      color: var(--pink); font-weight: 600; font-size: 14px;
+      display: inline-block; margin-top: 16px;
+    }
+    .about-strip .link:hover { text-decoration: underline; }
+
+    .services-teaser { background: var(--pink-bg); padding: 72px 0; }
+    .services-teaser p { max-width: 500px; }
+    .services-teaser .link {
+      color: var(--pink); font-weight: 700; font-size: 14px;
+      display: inline-block; margin-top: 12px;
+    }
+    .services-teaser .link:hover { text-decoration: underline; }
+
+    .site-footer { background: #111; padding: 60px 40px 40px; }
+    @media (max-width: 640px) { .site-footer { padding: 48px 20px 36px; } }
+
+    .footer-inner {
+      max-width: 740px; margin: 0 auto 40px;
+      display: flex; gap: 56px; flex-wrap: wrap; justify-content: space-between;
+    }
+
+    .footer-logo .logo-mark { font-size: 9px; width: 58px; height: 40px; margin-bottom: 14px; }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.75; max-width: 200px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500; }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-col { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 2; }
+    .footer-contact-col a { color: var(--pink); font-weight: 600; }
+
+    .footer-bottom {
+      max-width: 740px; margin: 0 auto;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 11px; color: rgba(255,255,255,0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" id="nav">
+    <a href="index.html" class="logo-mark">Brown Girl<br>Project</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="research.html">Research</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Independent Research · New York</div>
+      <h1>We document<br>what it means<br>to be a woman<br>of color<br>in America.</h1>
+      <hr class="rule">
+      <p class="hero-sub">
+        Brown Girl Project is an independent research organization exploring identity, gender, and social cohesion among women of color in the United States.
+      </p>
+      <a href="research.html" class="btn">Read the Report</a>
+    </div>
+  </section>
+
+  <div class="report-feature">
+    <div class="container">
+      <div class="eyebrow">Vol. 01 &nbsp;·&nbsp; 2026</div>
+      <h2>What It Means to Be a Woman of Color in the U.S.</h2>
+      <p>
+        Our first research report draws on findings from a two-phase qualitative study — 22 participants across three focus groups and individual interviews. Real voices. Rigorous research. Given back to the community it came from.
+      </p>
+      <a href="research.html" class="btn">Read the Report</a>
+    </div>
+  </div>
+
+  <section class="about-strip">
+    <div class="container">
+      <div class="eyebrow">About</div>
+      <p>
+        Founded in 2022 by Anjali Tallapragada, Brown Girl Project began as graduate thesis research at NYU and has grown into an independent research and community practice. Our work sits at the intersection of qualitative research, community engagement, and knowledge return.
+      </p>
+      <p>
+        We believe research belongs to the communities it studies — not just to institutions.
+      </p>
+      <a href="research.html" class="link">Our research →</a>
+    </div>
+  </section>
+
+  <section class="services-teaser">
+    <div class="container">
+      <div class="eyebrow">For Organizations</div>
+      <h2>Work with BGP</h2>
+      <p>
+        We offer Listening Labs — structured, facilitated research conversations for nonprofits, NGOs, and foundations that want to understand their communities through qualitative methods.
+      </p>
+      <a href="services.html" class="link">Learn about Listening Labs →</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-mark">Brown Girl<br>Project</div>
+        <p class="footer-tagline">Independent research rooted in community.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-contact-col">
+        <a href="mailto:browngirlprojectny@gmail.com">browngirlprojectny@gmail.com</a><br>
+        <a href="https://instagram.com/_browngirlproject">@_browngirlproject</a><br>
+        browngirlproject.org
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Brown Girl Project. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

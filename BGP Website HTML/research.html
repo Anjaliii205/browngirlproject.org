@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — Brown Girl Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink: #E5007D;
+      --black: #111;
+      --gray: #444;
+      --muted: #888;
+      --border: #e8e8e8;
+      --pink-bg: #fff5fa;
+    }
+
+    body { font-family: 'Inter', Arial, sans-serif; background: #fff; color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    .site-nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; }
+    .logo-mark { display: inline-flex; align-items: center; background: var(--pink); color: #fff; font-size: 9.5px; font-weight: 800; line-height: 1.3; padding: 9px 11px; width: 64px; height: 44px; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { font-size: 13px; font-weight: 600; color: #666; transition: color 0.12s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--pink); }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 0; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--black); }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 20px; }
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #fff; flex-direction: column; gap: 0; border-bottom: 2px solid var(--border); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+      .site-nav.open .nav-links { display: flex; }
+      .nav-links a { padding: 16px 20px; font-size: 15px; border-bottom: 1px solid var(--border); }
+    }
+
+    .container { max-width: 740px; margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    .eyebrow { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--pink); margin-bottom: 16px; }
+    .rule { border: none; border-top: 2px solid var(--pink); width: 36px; margin: 28px 0; }
+    h1 { font-size: clamp(42px, 8vw, 68px); font-weight: 900; line-height: 1.0; letter-spacing: -2px; color: var(--black); margin-bottom: 24px; }
+    h2 { font-size: clamp(26px, 5vw, 38px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--black); margin-bottom: 16px; }
+    h3 { font-size: 19px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    p { font-size: 16px; color: var(--gray); line-height: 1.75; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    .btn { display: inline-block; background: var(--pink); color: #fff; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 14px 30px; margin-top: 12px; transition: opacity 0.12s; }
+    .btn:hover { opacity: 0.85; }
+
+    .page-header { padding: 64px 0 56px; border-bottom: 1px solid var(--border); }
+
+    .report-block { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .report-vol { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 12px; }
+    .report-block p { max-width: 580px; }
+
+    .report-findings { margin: 36px 0; display: flex; flex-direction: column; gap: 20px; max-width: 580px; }
+    .finding { padding-left: 20px; border-left: 3px solid var(--pink); }
+    .finding-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--pink); margin-bottom: 4px; }
+    .finding p { font-size: 15px; line-height: 1.65; margin-bottom: 0; }
+
+    .methodology-block { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .methodology-block p { max-width: 580px; }
+    .phase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 36px; max-width: 620px; }
+    @media (max-width: 560px) { .phase-grid { grid-template-columns: 1fr; } }
+    .phase { border-top: 2px solid var(--pink); padding-top: 16px; }
+    .phase-num { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--pink); margin-bottom: 8px; }
+    .phase h3 { font-size: 17px; margin-bottom: 8px; }
+    .phase p { font-size: 14px; line-height: 1.7; }
+
+    .ethics-block { padding: 80px 0; }
+    .ethics-block p { max-width: 580px; }
+    .ethics-list { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; max-width: 560px; }
+    .ethics-item { font-size: 15px; color: var(--gray); padding-left: 18px; position: relative; line-height: 1.6; }
+    .ethics-item::before { content: '—'; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
+
+    .site-footer { background: #111; padding: 60px 40px 40px; }
+    @media (max-width: 640px) { .site-footer { padding: 48px 20px 36px; } }
+    .footer-inner { max-width: 740px; margin: 0 auto 40px; display: flex; gap: 56px; flex-wrap: wrap; justify-content: space-between; }
+    .footer-logo .logo-mark { font-size: 9px; width: 58px; height: 40px; margin-bottom: 14px; }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.75; max-width: 200px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500; }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-col { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 2; }
+    .footer-contact-col a { color: var(--pink); font-weight: 600; }
+    .footer-bottom { max-width: 740px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; color: rgba(255,255,255,0.25); }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" id="nav">
+    <a href="index.html" class="logo-mark">Brown Girl<br>Project</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="research.html" class="active">Research</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="eyebrow">Research</div>
+      <h1>What we found.</h1>
+    </div>
+  </div>
+
+  <section class="report-block">
+    <div class="container">
+      <div class="report-vol">Vol. 01 · 2026</div>
+      <h2>What It Means to Be a Woman of Color in the U.S.</h2>
+      <p>Our first research report draws on a two-phase qualitative study exploring identity, gender, and social cohesion among women of color in the United States. 22 participants across three focus groups and individual interviews.</p>
+      <p>The report is written for the communities it came from, not just for academic audiences.</p>
+      <div class="report-findings">
+        <div class="finding">
+          <div class="finding-label">Identity</div>
+          <p>How women of color navigate identity as both personal and political — assigned from outside and claimed from within.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-label">Belonging</div>
+          <p>The tension between belonging to multiple communities and feeling fully at home in none of them.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-label">Solidarity</div>
+          <p>How women of color build community across difference — and where the fractures are.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-label">Resistance</div>
+          <p>Everyday acts of resistance embedded in how women show up, speak, and take up space.</p>
+        </div>
+      </div>
+      <a href="report.pdf" class="btn" target="_blank">Read the Report (PDF)</a>
+    </div>
+  </section>
+
+  <section class="methodology-block">
+    <div class="container">
+      <div class="eyebrow">Methodology</div>
+      <h2>How we did the research.</h2>
+      <p>The research followed a two-phase design grounded in qualitative and participatory methods. Facilitation was trauma-informed and designed to create genuine space for reflection. Findings were shared back with participants before broader publication.</p>
+      <div class="phase-grid">
+        <div class="phase">
+          <div class="phase-num">Phase One</div>
+          <h3>Thesis Research</h3>
+          <p>Graduate-level qualitative research at NYU, focused on identity and social cohesion among women of color. Formed the foundation of the project and its core research questions.</p>
+        </div>
+        <div class="phase">
+          <div class="phase-num">Phase Two</div>
+          <h3>Original Field Research</h3>
+          <p>22 participants across 3 focus groups and individual interviews. Recruited through community networks. Conducted online to enable broader geographic participation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ethics-block">
+    <div class="container">
+      <div class="eyebrow">Research Ethics</div>
+      <h2>How we handle what you share.</h2>
+      <p>Participation in BGP research is always voluntary and requires informed consent. Research is returned to the communities it studies — not just published for institutional audiences.</p>
+      <div class="ethics-list">
+        <div class="ethics-item">Participation is voluntary and can be withdrawn at any time</div>
+        <div class="ethics-item">Identifying details are not made public without explicit permission</div>
+        <div class="ethics-item">Notes and recordings are used solely for research and analysis</div>
+        <div class="ethics-item">Findings are shared back with participants before broader publication</div>
+        <div class="ethics-item">Research is written in accessible language for non-academic audiences</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-mark">Brown Girl<br>Project</div>
+        <p class="footer-tagline">Independent research rooted in community.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-contact-col">
+        <a href="mailto:browngirlprojectny@gmail.com">browngirlprojectny@gmail.com</a><br>
+        <a href="https://instagram.com/_browngirlproject">@_browngirlproject</a><br>
+        browngirlproject.org
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Brown Girl Project. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
