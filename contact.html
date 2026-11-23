@@ -14,12 +14,12 @@
 
     .site-nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; }
     .logo-mark { display: inline-flex; align-items: center; background: var(--pink); color: #fff; font-size: 9.5px; font-weight: 800; line-height: 1.3; padding: 9px 11px; width: 64px; height: 44px; flex-shrink: 0; }
-    .nav-links { display: flex; gap: 36px; }
-    .nav-links a { font-size: 13px; font-weight: 600; color: #666; transition: color 0.12s; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 13px; font-weight: 600; color: #666; white-space: nowrap; transition: color 0.12s; }
     .nav-links a:hover, .nav-links a.active { color: var(--pink); }
     .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 0; }
     .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--black); }
-    @media (max-width: 640px) {
+    @media (max-width: 900px) {
       .site-nav { padding: 0 20px; }
       .nav-toggle { display: flex; }
       .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #fff; flex-direction: column; gap: 0; border-bottom: 2px solid var(--border); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
@@ -31,23 +31,94 @@
     @media (max-width: 640px) { .container { padding: 0 20px; } }
 
     .eyebrow { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--pink); margin-bottom: 16px; }
+    .rule { border: none; border-top: 2px solid var(--pink); width: 36px; margin: 28px 0; }
     h1 { font-size: clamp(42px, 8vw, 68px); font-weight: 900; line-height: 1.0; letter-spacing: -2px; color: var(--black); margin-bottom: 24px; }
+    h2 { font-size: clamp(26px, 5vw, 38px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--black); margin-bottom: 16px; }
+    h3 { font-size: 19px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
     p { font-size: 16px; color: var(--gray); line-height: 1.75; margin-bottom: 16px; }
     p:last-child { margin-bottom: 0; }
+    .btn { display: inline-block; background: var(--pink); color: #fff; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 14px 30px; margin-top: 12px; transition: opacity 0.12s; }
+    .btn:hover { opacity: 0.85; }
+    .btn-outline { background: transparent; color: var(--pink); box-shadow: inset 0 0 0 2px var(--pink); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .link { color: var(--pink); font-weight: 700; font-size: 14px; display: inline-block; margin-top: 12px; }
+    .link:hover { text-decoration: underline; }
 
     .page-header { padding: 64px 0 56px; border-bottom: 1px solid var(--border); }
+    .page-header .lead { font-size: 19px; color: var(--black); font-weight: 600; max-width: 600px; line-height: 1.5; margin-bottom: 0; }
+    .block { padding: 72px 0; border-bottom: 1px solid var(--border); }
+    .block p { max-width: 590px; }
+    .block.tint { background: var(--pink-bg); }
+    .block.pink { background: var(--pink); border-bottom: none; }
+    .block.pink .eyebrow { color: rgba(255,255,255,0.7); }
+    .block.pink h2 { color: #fff; max-width: 560px; }
+    .block.pink p { color: rgba(255,255,255,0.85); }
+    .block.pink .btn { background: #fff; color: var(--pink); }
+    .block.pink .btn-outline { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px #fff; }
+    .block.last { border-bottom: none; }
+    .lead { font-size: 17px; color: var(--black); font-weight: 500; line-height: 1.7; }
+    .note { font-size: 14px; color: var(--muted); font-style: italic; }
+    .meta { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 12px; }
+    .block.pink .meta { color: rgba(255,255,255,0.7); }
 
-    .contact-section { padding: 80px 0; }
-    .contact-section > .container > p { max-width: 520px; margin-bottom: 48px; }
+    .hero { padding: 96px 0 80px; border-bottom: 1px solid var(--border); }
+    .hero h1 { max-width: 640px; }
+    .hero .hero-sub { font-size: 17px; max-width: 580px; }
 
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 580px; }
+    .findings { margin: 32px 0; display: flex; flex-direction: column; gap: 20px; max-width: 590px; }
+    .finding { padding-left: 20px; border-left: 3px solid var(--pink); }
+    .finding-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--pink); margin-bottom: 4px; }
+    .finding p { font-size: 15px; line-height: 1.65; margin-bottom: 0; }
+
+    .steps { margin: 36px 0 32px; max-width: 620px; }
+    .step { padding: 24px 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 52px 1fr; gap: 16px; }
+    .step:last-child { border-bottom: 1px solid var(--border); }
+    .step-num { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--pink); padding-top: 3px; }
+    .step h3 { font-size: 17px; margin-bottom: 6px; }
+    .step p { font-size: 15px; margin-bottom: 0; }
+
+    .dash-list { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; max-width: 560px; }
+    .dash-list div { font-size: 15px; color: var(--gray); padding-left: 18px; position: relative; line-height: 1.6; }
+    .dash-list div::before { content: '—'; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
+    .dash-list.strong div { font-weight: 600; color: var(--black); }
+
+    .tiers { max-width: 620px; margin-top: 28px; }
+    .tier { padding: 22px 0; border-top: 1px solid var(--border); }
+    .tier:last-child { border-bottom: 1px solid var(--border); }
+    .tier h3 { font-size: 16px; margin-bottom: 6px; }
+    .tier p { font-size: 14px; margin-bottom: 0; }
+    .who-box { margin-top: 24px; max-width: 560px; padding: 24px 28px; border-left: 3px solid var(--pink); background: var(--pink-bg); }
+    .who-box p { font-size: 15px; margin-bottom: 0; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 580px; margin-top: 40px; }
     @media (max-width: 560px) { .contact-grid { grid-template-columns: 1fr; gap: 36px; } }
-
     .contact-item-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--pink); margin-bottom: 10px; }
     .contact-item a { font-size: 15px; font-weight: 600; color: var(--black); display: block; margin-bottom: 4px; transition: color 0.12s; }
     .contact-item a:hover { color: var(--pink); }
     .contact-item p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 6px; margin-bottom: 0; }
 
+    .cycle { display: block; width: 100%; max-width: 460px; margin: 40px auto 8px; font-family: 'Inter', Arial, sans-serif; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 36px 0 28px; }
+    @media (max-width: 640px) { .gallery { grid-template-columns: 1fr 1fr; gap: 12px; } }
+    .tile { margin: 0; }
+    .tile img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #f4f3ef; box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 18px rgba(0,0,0,0.06); }
+    .feature-fig { margin: 36px 0 0; max-width: 620px; }
+    .feature-fig img { display: block; width: 100%; border: 1px solid var(--border); }
+    .feature-fig figcaption { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    .tile-ph { background: var(--pink-bg); border: 1px dashed #f3a6cf; display: flex; align-items: center; justify-content: center; padding: 18px; text-align: center; }
+    .tile figcaption { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-top: 8px; }
+    .ph-big { font-size: 17px; font-weight: 900; text-transform: uppercase; line-height: 1.15; color: var(--pink); }
+    .ph-quote { font-size: 14px; font-style: italic; color: var(--black); line-height: 1.5; }
+    .ph-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #e58ab9; }
+    .contact-form { display: flex; flex-direction: column; gap: 18px; max-width: 560px; margin-top: 28px; }
+    .contact-form label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--black); }
+    .contact-form label span { font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--muted); }
+    .contact-form input, .contact-form select, .contact-form textarea { font: inherit; font-size: 15px; font-weight: 400; text-transform: none; letter-spacing: 0; padding: 12px 14px; border: 1px solid #ddd; background: #fff; color: var(--black); border-radius: 0; }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: 2px solid var(--pink); outline-offset: -1px; border-color: var(--pink); }
+    .contact-form .btn { align-self: flex-start; border: none; cursor: pointer; font-family: inherit; }
+    .tier p + p { margin-top: 8px; }
+
+    [id] { scroll-margin-top: 88px; }
     .site-footer { background: #111; padding: 60px 40px 40px; }
     @media (max-width: 640px) { .site-footer { padding: 48px 20px 36px; } }
     .footer-inner { max-width: 740px; margin: 0 auto 40px; display: flex; gap: 56px; flex-wrap: wrap; justify-content: space-between; }
@@ -71,7 +142,9 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="research.html">Research</a>
-      <a href="services.html">Services</a>
+      <a href="approach.html">Our Approach</a>
+      <a href="practice.html">Research in Practice</a>
+      <a href="collaborate.html">Collaborate</a>
       <a href="contact.html" class="active">Contact</a>
     </div>
   </nav>
@@ -80,34 +153,54 @@
     <div class="container">
       <div class="eyebrow">Contact</div>
       <h1>Get in touch.</h1>
+      <p class="lead">For research inquiries, potential collaborations, participation opportunities, or questions about our work, please contact Brown Girl Project.</p>
     </div>
   </div>
 
-  <section class="contact-section">
+  <section class="block ">
     <div class="container">
-      <p>For research inquiries, collaboration, or questions about Listening Labs — reach out directly.</p>
       <div class="contact-grid">
         <div class="contact-item">
           <div class="contact-item-label">Email</div>
           <a href="mailto:browngirlprojectny@gmail.com">browngirlprojectny@gmail.com</a>
-          <p>We respond within a few business days.</p>
         </div>
         <div class="contact-item">
-          <div class="contact-item-label">Instagram</div>
-          <a href="https://instagram.com/_browngirlproject" target="_blank">@_browngirlproject</a>
-          <p>Research updates, findings, and community conversation.</p>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-label">For Organizations</div>
-          <a href="services.html">Listening Labs →</a>
-          <p>Learn about our services for nonprofits and NGOs.</p>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-label">Founder</div>
-          <a href="https://linkedin.com/in/anjali-tallapragada" target="_blank">Anjali Tallapragada</a>
-          <p>Founder & Research Lead, Brown Girl Project.</p>
+          <div class="contact-item-label">Connect With Us</div>
+          <a href="https://instagram.com/_browngirlproject" target="_blank">Instagram: @_browngirlproject</a>
+          <a href="https://www.linkedin.com/in/anjali-tallapragada" target="_blank">LinkedIn: Brown Girl Project</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="block tint last">
+    <div class="container">
+      <div class="eyebrow">Contact Form</div>
+      <h2>Send us a message.</h2>
+      <form class="contact-form" id="cform">
+        <label>Name<input name="name" required></label>
+        <label><div>Organization or Affiliation <span>(optional)</span></div><input name="org"></label>
+        <label>Email Address<input name="email" type="email" required></label>
+        <label>Nature of Inquiry
+          <select name="topic" required>
+            <option>Research Collaboration</option>
+            <option>Research &amp; Methodology</option>
+            <option>Community Participation</option>
+            <option>General Inquiry</option>
+          </select>
+        </label>
+        <label>Message<textarea name="message" rows="6" required></textarea></label>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <script>
+        // GitHub Pages has no server, so the form opens the visitor's email app with everything filled in.
+        document.getElementById('cform').addEventListener('submit', function (e) {
+          e.preventDefault();
+          var f = e.target;
+          var body = 'Name: ' + f.name.value + '\nOrganization: ' + (f.org.value || '-') + '\nEmail: ' + f.email.value + '\n\n' + f.message.value;
+          location.href = 'mailto:browngirlprojectny@gmail.com?subject=' + encodeURIComponent(f.topic.value + ' — ' + f.name.value) + '&body=' + encodeURIComponent(body);
+        });
+      </script>
     </div>
   </section>
 
@@ -120,7 +213,9 @@
       <nav class="footer-links">
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
-        <a href="services.html">Services</a>
+        <a href="approach.html">Our Approach</a>
+        <a href="practice.html">Research in Practice</a>
+        <a href="collaborate.html">Collaborate</a>
         <a href="contact.html">Contact</a>
       </nav>
       <div class="footer-contact-col">
