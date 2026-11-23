@@ -102,6 +102,7 @@
     @media (max-width: 640px) { .gallery { grid-template-columns: 1fr 1fr; gap: 12px; } }
     .tile { margin: 0; }
     .tile img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #f4f3ef; box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 18px rgba(0,0,0,0.06); }
+    .tile img.fit { object-fit: contain; background: #fff; }
     .feature-fig { margin: 36px 0 0; max-width: 620px; }
     .feature-fig img { display: block; width: 100%; border: 1px solid var(--border); }
     .feature-fig figcaption { font-size: 12px; color: var(--muted); margin-top: 10px; }
@@ -150,69 +151,44 @@
     </div>
   </nav>
 
-  <section class="hero practice-hero">
+  <div class="page-header">
     <div class="container">
-      <div class="eyebrow">Research in Practice</div>
-      <h1>What happens after the research?</h1>
-      <hr class="rule">
-      <p class="hero-sub">At Brown Girl Project, research dissemination is an extension of the research process itself.</p>
-      <p class="hero-sub">Following our first investigation, we translated participant experiences and emerging themes into accessible public-facing content, bringing the research beyond the written report and into spaces where women of color could engage with it.</p>
+      <div class="eyebrow">Beyond the Report</div>
+      <h1>Research in Practice</h1>
+      <p class="lead">Brown Girl Project uses narrative as a means of translating qualitative research into accessible, public-facing materials and returning research findings to the communities whose experiences inform them.</p>
+    </div>
+  </div>
+
+  <section class="block ">
+    <div class="container">
+      <div class="eyebrow">Research Translation</div>
+      <p>Through visual storytelling and social media, we translate research findings beyond the written report, making them accessible to a wider community of women of color.</p>
     </div>
   </section>
 
   <section class="block ">
     <div class="container">
-      <div class="eyebrow">From Research to Public Dialogue</div>
-      <h2>From participant experiences to public dialogue.</h2>
-      <p>Academic publications are one way of communicating research, but they are not always the most accessible to the communities whose experiences inform them.</p>
-      <p>Through digital storytelling, visual materials, and social media, Brown Girl Project explores alternative ways of communicating qualitative research.</p>
-      <p>Rather than presenting a single conclusion about what it means to be a woman of color, these materials bring forward different experiences, questions, and perspectives emerging from the investigation.</p>
+      <div class="eyebrow">Narrative Representation</div>
+      <p>Drawing from participant conversations, we develop narrative-based materials that reflect what women described, experienced, and felt.</p>
+      <p>Rather than prescribing an interpretation or drawing a conclusion for the audience, these materials present different perspectives and lived experiences, leaving room for individual reflection and interpretation.</p>
+    </div>
+  </section>
+
+  <section class="block tint last">
+    <div class="container">
+      <div class="eyebrow">Published Research Materials</div>
       <div class="gallery">
 <figure class="tile"><img src="images/am-i-even-a-woman-of-color.jpg" alt="Am I even a woman of color?" loading="lazy"><figcaption>Research carousel</figcaption></figure>
 <figure class="tile"><img src="images/quote-experienced-life.jpg" alt="“I don’t know if I really experienced life as a woman of color like that.”" loading="lazy"><figcaption>Participant narrative</figcaption></figure>
 <figure class="tile"><img src="images/who-taught-us-beautiful.jpg" alt="Who taught us what beautiful was?" loading="lazy"><figcaption>Research carousel</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="block tint">
-    <div class="container">
-      <div class="eyebrow">Narratives &amp; Everyday Experiences</div>
-      <p>Our first investigation examined how women of color understand their identities without assuming that their experiences are defined solely by marginalization.</p>
-      <p>Our public-facing research materials reflect this approach, exploring the complexities of everyday life, cultural experiences, social expectations, and the ways women understand themselves.</p>
-      <p>By sharing these perspectives, we seek to create space for narratives that are often overlooked or simplified.</p>
-    </div>
-  </section>
-
-  <section class="block ">
-    <div class="container">
-      <div class="eyebrow">Returning Knowledge to Communities</div>
-      <p>Making research accessible creates opportunities for people to recognize their own experiences, encounter different perspectives, and reflect on the questions emerging from an investigation.</p>
-      <p>Brown Girl Project seeks to build on this process through continued community engagement, dialogue, and opportunities for participants to respond to research findings.</p>
-      <p>These responses can inform new questions and future investigations.</p>
-      <figure class="feature-fig">
-        <img src="images/what-the-girls-are-saying.jpg" alt="What the Girls Are Saying — Community Conversation, Second Edition, July 26, 2026, online" loading="lazy">
-        <figcaption>Community conversation · <em>What the Girls Are Saying</em>, second edition</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="block last">
-    <div class="container">
-      <div class="eyebrow">Explore the Research Series</div>
-      <h2>The research series.</h2>
-      <div class="gallery">
+<figure class="tile"><img src="images/predominantly-white-spaces.jpg" alt="A lot of women described becoming more aware of their identity in predominantly white spaces." loading="lazy"><figcaption>Emerging theme</figcaption></figure>
 <figure class="tile"><img src="images/who-told-you.jpg" alt="Who told you what being a woman of color was supposed to look like?" loading="lazy"><figcaption>Research carousel</figcaption></figure>
 <figure class="tile"><img src="images/quote-family-stereotype.jpg" alt="“My family reflects the stereotype… but I was different.”" loading="lazy"><figcaption>Participant narrative</figcaption></figure>
 <figure class="tile"><img src="images/white-people-culture.jpg" alt="When did I realize white people have their own culture?" loading="lazy"><figcaption>Research carousel</figcaption></figure>
-<figure class="tile"><img src="images/predominantly-white-spaces.jpg" alt="A lot of women described becoming more aware of their identity in predominantly white spaces." loading="lazy"><figcaption>Emerging theme</figcaption></figure>
 <figure class="tile"><img src="images/grew-up-american.jpg" alt="Many women grew up American, but still found themselves feeling unexpectedly out of place in certain spaces." loading="lazy"><figcaption>Emerging theme</figcaption></figure>
+<figure class="tile"><img class="fit" src="images/what-the-girls-are-saying.jpg" alt="What the Girls Are Saying — Community Conversation, Second Edition, July 26, 2026, online" loading="lazy"><figcaption>Community conversation</figcaption></figure>
       </div>
-      <p class="note">The materials featured here were developed from Brown Girl Project's first qualitative investigation with women of color in the United States.</p>
-      <div class="btn-row">
-        <a href="research.html" class="btn">Read the Original Research</a>
-        <a href="https://instagram.com/_browngirlproject" class="btn btn-outline" target="_blank">Explore Our Instagram</a>
-      </div>
+      <a href="https://instagram.com/_browngirlproject" class="link" target="_blank">See more on Instagram →</a>
     </div>
   </section>
 

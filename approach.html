@@ -102,6 +102,7 @@
     @media (max-width: 640px) { .gallery { grid-template-columns: 1fr 1fr; gap: 12px; } }
     .tile { margin: 0; }
     .tile img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #f4f3ef; box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 18px rgba(0,0,0,0.06); }
+    .tile img.fit { object-fit: contain; background: #fff; }
     .feature-fig { margin: 36px 0 0; max-width: 620px; }
     .feature-fig img { display: block; width: 100%; border: 1px solid var(--border); }
     .feature-fig figcaption { font-size: 12px; color: var(--muted); margin-top: 10px; }
