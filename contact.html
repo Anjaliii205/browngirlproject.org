@@ -104,6 +104,8 @@
     .tile img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #f4f3ef; box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 18px rgba(0,0,0,0.06); }
     .tile img.fit { object-fit: contain; background: #fff; }
     .page-header .header-sub { max-width: 600px; margin-top: 16px; }
+    .form-sent { margin-top: 28px; max-width: 560px; padding: 20px 24px; border-left: 3px solid var(--pink); background: #fff; font-size: 16px; font-weight: 600; color: var(--black); }
+    .contact-form[hidden], .form-sent[hidden] { display: none; }
     .mail-line { margin-top: 18px; font-size: 15px; }
     .mail-line a { color: var(--pink); font-weight: 600; }
     .feature-fig { margin: 36px 0 0; max-width: 620px; }
@@ -182,29 +184,32 @@
     <div class="container">
       <div class="eyebrow">Contact Form</div>
       <h2>Send us a message.</h2>
-      <form class="contact-form" id="cform">
-        <label>Name<input name="name" required></label>
-        <label><div>Organization or Affiliation <span>(optional)</span></div><input name="org"></label>
+      <div class="form-sent" id="sent" hidden>Thank you — your message has been sent. We'll be in touch soon.</div>
+      <form class="contact-form" id="form" action="https://formsubmit.co/browngirlprojectny@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from browngirlproject.org">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://browngirlproject.org/contact.html?sent=1#form">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label>Name<input name="Name" required></label>
+        <label><div>Organization or Affiliation <span>(optional)</span></div><input name="Organization"></label>
         <label>Email Address<input name="email" type="email" required></label>
         <label>Nature of Inquiry
-          <select name="topic" required>
+          <select name="Inquiry" required>
             <option>Research Collaboration</option>
             <option>Research &amp; Methodology</option>
             <option>Community Participation</option>
             <option>General Inquiry</option>
           </select>
         </label>
-        <label>Message<textarea name="message" rows="6" required></textarea></label>
+        <label>Message<textarea name="Message" rows="6" required></textarea></label>
         <button type="submit" class="btn">Send Message</button>
       </form>
       <script>
-        // GitHub Pages has no server, so the form opens the visitor's email app with everything filled in.
-        document.getElementById('cform').addEventListener('submit', function (e) {
-          e.preventDefault();
-          var f = e.target;
-          var body = 'Name: ' + f.name.value + '\nOrganization: ' + (f.org.value || '-') + '\nEmail: ' + f.email.value + '\n\n' + f.message.value;
-          location.href = 'mailto:browngirlprojectny@gmail.com?subject=' + encodeURIComponent(f.topic.value + ' — ' + f.name.value) + '&body=' + encodeURIComponent(body);
-        });
+        // Messages are delivered to the BGP inbox by FormSubmit, then the visitor is sent back here with ?sent=1.
+        if (location.search.indexOf('sent=1') !== -1) {
+          document.getElementById('sent').hidden = false;
+          document.getElementById('form').hidden = true;
+        }
       </script>
     </div>
   </section>
